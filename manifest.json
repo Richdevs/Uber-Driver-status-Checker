@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "Uber Online Driver Count Helper",
+    "version": "1.0",
+    "description": "Reads and displays the number of online drivers in your area.",
+    "permissions": ["activeTab"],
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ]
+}
+
