@@ -8,22 +8,34 @@ function injectScript(tabId, scriptFile) {
 // Function to handle the response from the content script
 function handleResponse(response) {
     const rowcountValue = response && response.rowcount;
-  
-    
+
     document.getElementById('rowcount').textContent = rowcountValue || 'Not found';
+    
+
+    const namesList = document.getElementById('names');
+   namesList.innerHTML = ''; // Clear the existing content
+
+    // if (response.rowData && response.rowData.length > 0) {
+    //     const namesItems = response.rowData.map(name => `<li>${name}</li>`);
+    //     namesList.innerHTML = `<ul>${namesItems.join('')}</ul>`;
+    // } else {
+    //     namesList.innerHTML = 'Not found';
+    // }
 }
 
+
+
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        const activeTab = tabs[0];
-    
-        // Listen for tab updates (page load events)
-        chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
-            if (changeInfo.status === 'complete' && tabId === activeTab.id) {
-                // Inject the content script after the page has fully loaded
-                injectScript(tabId, 'content.js');
-            }
-        });
+    const activeTab = tabs[0];
+
+    // Listen for tab updates (page load events)
+    chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
+        if (changeInfo.status === 'complete' && tabId === activeTab.id) {
+            // Inject the content script after the page has fully loaded
+            injectScript(tabId, 'content.js');
+        }
     });
+});
+
 // Set up a listener for messages from the content script
 chrome.runtime.onMessage.addListener(handleResponse);
-  
