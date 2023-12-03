@@ -10,20 +10,7 @@ function handleResponse(response) {
     const rowcountValue = response && response.rowcount;
 
     document.getElementById('rowcount').textContent = rowcountValue || 'Not found';
-    
-
-    const namesList = document.getElementById('names');
-   namesList.innerHTML = ''; // Clear the existing content
-
-    // if (response.rowData && response.rowData.length > 0) {
-    //     const namesItems = response.rowData.map(name => `<li>${name}</li>`);
-    //     namesList.innerHTML = `<ul>${namesItems.join('')}</ul>`;
-    // } else {
-    //     namesList.innerHTML = 'Not found';
-    // }
 }
-
-
 
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     const activeTab = tabs[0];

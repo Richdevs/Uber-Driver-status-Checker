@@ -2,15 +2,27 @@
 
 body {
     width: 200px;
+    height:fit-content;
     text-align: center;
     padding: 10px;
+    background: lightgray;
   }
   
   #rowcount-container {
-    margin-bottom: 10px;
-  }
   
+    margin-bottom: 10px;
+    
+    border-radius: 10px;
+  }
+  h3{
+    text-align:center;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+  }
   #rowcount-value {
     font-weight: bold;
+    color:darkgoldenrod
   }
   
